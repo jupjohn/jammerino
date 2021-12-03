@@ -1931,15 +1931,28 @@ void ChannelView::addContextMenuItems(
         crossPlatformCopy(copyString);
     });
 
-    // If is a link to a twitch user/stream
+    // If is a link to a Twitch user/stream
     if (hoveredElement->getLink().type == Link::Url)
     {
         static QRegularExpression twitchChannelRegex(
-            R"(^(?:https?:\/\/)?(?:www\.|go\.)?twitch\.tv\/(?<username>[a-z0-9_]{3,}))",
+            R"(^(?:https?:\/\/)?(?:www\.|go\.)?twitch\.tv\/(?:popout\/)?(?<username>[a-z0-9_]{3,}))",
             QRegularExpression::CaseInsensitiveOption);
         static QSet<QString> ignoredUsernames{
-            "videos",    "settings", "directory",     "jobs",     "friends",
-            "inventory", "payments", "subscriptions", "messages",
+            "directory",      //
+            "downloads",      //
+            "drops",          //
+            "friends",        //
+            "inventory",      //
+            "jobs",           //
+            "messages",       //
+            "payments",       //
+            "profile",        //
+            "security",       //
+            "settings",       //
+            "subscriptions",  //
+            "turbo",          //
+            "videos",         //
+            "wallet",         //
         };
 
         auto twitchMatch =

@@ -123,7 +123,7 @@ Split *SplitContainer::appendNewSplit(bool openChannelNameDialog)
 
     if (openChannelNameDialog)
     {
-        split->showChangeChannelPopup("Open channel name", true, [=](bool ok) {
+        split->showChangeChannelPopup("Open channel", true, [=](bool ok) {
             if (!ok)
             {
                 this->deleteSplit(split);
@@ -255,7 +255,8 @@ void SplitContainer::addSplit(Split *split)
                     tab->connect(tab, &QWidget::destroyed, [tab]() mutable {
                         ClosedSplits::invalidateTab(tab);
                     });
-                    ClosedSplits::push({split->getChannel()->getName(), tab});
+                    ClosedSplits::push({split->getChannel()->getName(),
+                                        split->getFilters(), tab});
                 }
                 break;
 
@@ -817,8 +818,6 @@ void SplitContainer::applyFromDescriptorRecursively(
         const auto &containerNode = *n;
 
         bool vertical = containerNode.vertical_;
-
-        Direction direction = vertical ? Direction::Below : Direction::Right;
 
         node->type_ =
             vertical ? Node::VerticalContainer : Node::HorizontalContainer;
