@@ -229,7 +229,7 @@ void BaseWindow::init()
                                    0, 0, 0,
                                    SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
                 },
-                this->managedConnections_);
+                this->connections_);
         });
     }
 #else
@@ -238,13 +238,14 @@ void BaseWindow::init()
     {
         getSettings()->windowTopMost.connect(
             [this](bool topMost, auto) {
+                auto isVisible = this->isVisible();
                 this->setWindowFlag(Qt::WindowStaysOnTopHint, topMost);
-                if (this->isVisible())
+                if (isVisible)
                 {
                     this->show();
                 }
             },
-            this->managedConnections_);
+            this->connections_);
     }
 #endif
 }
