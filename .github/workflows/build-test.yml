@@ -1,0 +1,50 @@
+---
+name: Build Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          submodules: true
+          fetch-depth: 0  # allows for tags access
+
+      # LINUX
+      - name: Install p7zip (Ubuntu)
+        run: sudo dnf update && sudo dnf install -y p7zip
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          aqtversion: '==1.1.1'
+          extra: --external 7z
+          version: 5.15.2
+
+      # LINUX
+      - name: Install dependencies (Ubuntu)
+        run: |
+            sudo dnf update
+            sudo dnf install -y qt5-qtbase-devel qt5-qtmultimedia-devel qt5-qtsvg-devel libsecret-devel openssl-devel boost-devel cmake
+
+      - name: Build with CMake (Ubuntu)
+        run: |
+            mkdir build
+            cd build
+            cmake \
+              -DCMAKE_INSTALL_PREFIX=appdir/usr/ \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DPAJLADA_SETTINGS_USE_BOOST_FILESYSTEM=On \
+              -DUSE_PRECOMPILED_HEADERS=true \
+              ..
+            make -j`nproc`
+        shell: bash
+
+      - name: Package - AppImage (Ubuntu)
+        run: |
+            cd build
+            sh ./../.CI/CreateAppImage.sh
+        shell: bash
