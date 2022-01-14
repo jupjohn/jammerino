@@ -17,6 +17,13 @@ jobs:
       - name: Install p7zip (Ubuntu)
         run: sudo dnf update && sudo dnf install -y p7zip
 
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v2.1.7
+        with:
+          path: ../Qt
+          key: linux-QtCache-5.15.2-20210109
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
