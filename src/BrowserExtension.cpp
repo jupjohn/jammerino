@@ -8,7 +8,6 @@
 #include <QTimer>
 
 #include <chrono>
-#include <fstream>
 #include <iostream>
 #include <memory>
 #include <thread>

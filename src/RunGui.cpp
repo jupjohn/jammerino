@@ -10,7 +10,6 @@
 
 #include "Application.hpp"
 #include "common/Args.hpp"
-#include "common/Modes.hpp"
 #include "common/NetworkManager.hpp"
 #include "common/QLogging.hpp"
 #include "singletons/Paths.hpp"
@@ -18,7 +17,6 @@
 #include "singletons/Settings.hpp"
 #include "singletons/Updates.hpp"
 #include "util/CombinePath.hpp"
-#include "widgets/dialogs/LastRunCrashDialog.hpp"
 
 #ifdef USEWINSDK
 #    include "util/WindowsHelper.hpp"

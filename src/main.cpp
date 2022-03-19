@@ -1,7 +1,6 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QMessageBox>
-#include <QStringList>
 #include <memory>
 
 #include "BrowserExtension.hpp"
