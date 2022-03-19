@@ -70,7 +70,6 @@ public:
     } twitch;
 
 private:
-    void addSingleton(Singleton *singleton);
     void initPubsub();
     void initNm(Paths &paths);
 
