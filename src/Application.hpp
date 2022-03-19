@@ -21,7 +21,6 @@ class Theme;
 class WindowManager;
 class Logging;
 class Paths;
-class AccountManager;
 class Emotes;
 class Settings;
 class Fonts;
