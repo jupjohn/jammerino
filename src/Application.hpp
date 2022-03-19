@@ -31,8 +31,6 @@ class FfzBadges;
 class Application
 {
     std::vector<std::unique_ptr<Singleton>> singletons_;
-    int argc_;
-    char **argv_;
 
 public:
     static Application *instance;
