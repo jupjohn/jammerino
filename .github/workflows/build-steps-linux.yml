@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, ubuntu-latest]
+    runs-on: [self-hosted]
     strategy:
       matrix:
         qt-version: [5.15.2, 5.12.10]
