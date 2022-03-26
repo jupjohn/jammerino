@@ -9,13 +9,13 @@ jobs:
     runs-on: [self-hosted, ubuntu-latest]
     strategy:
       matrix:
-        qt-version: [5.15.2]
-        build-system: [cmake]
-        pch: [true]
-#        include:
-#          - qt-version: 5.15.2
-#            build-system: cmake
-#            pch: false
+        qt-version: [ 5.15.2, 5.12.10 ]
+        build-system: [ qmake, cmake ]
+        pch: [ true ]
+        include:
+          - qt-version: 5.15.2
+            build-system: cmake
+            pch: false
 
     steps:
       - uses: actions/checkout@v2.4.0
