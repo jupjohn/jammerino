@@ -8,11 +8,11 @@ on:
   pull_request:
 
 jobs:
-  build-windows:
-    uses: ./.github/workflows/build-steps-windows.yml
+#  build-windows:
+#    uses: ./.github/workflows/build-steps-windows.yml
 
-  build-macos:
-    uses: ./.github/workflows/build-steps-macos.yml
+#  build-macos:
+#    uses: ./.github/workflows/build-steps-macos.yml
 
   build-linux:
     uses: ./.github/workflows/build-steps-linux.yml
