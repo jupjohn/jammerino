@@ -23,7 +23,7 @@ jobs:
     uses: ./.github/workflows/build-steps-linux.yml
 
   create-release:
-    needs: build
+    needs: [build-windows, build-macos, build-linux]
     runs-on: ubuntu-latest
     if: (github.event_name == 'push' && github.ref == 'refs/heads/master')
 
