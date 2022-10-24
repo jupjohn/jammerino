@@ -342,6 +342,8 @@ struct HelixVip {
     }
 };
 
+using HelixMod = HelixVip;
+
 // TODO(jammehcow): when implementing mod list, just alias HelixVip to HelixMod
 //   as they share the same model.
 //   Alternatively, rename base struct to HelixUser or something and alias both
@@ -519,7 +521,7 @@ enum class HelixWhisperError {  // /w
     Forwarded,
 };  // /w
 
-enum class HelixListVIPsError {  // /vips
+enum class HelixListModsVIPsError {  // /vips
     Unknown,
     UserMissingScope,
     UserNotAuthorized,
@@ -788,7 +790,7 @@ public:
     virtual void getChannelVIPs(
         QString broadcasterID,
         ResultCallback<std::vector<HelixVip>> successCallback,
-        FailureCallback<HelixListVIPsError, QString> failureCallback) = 0;
+        FailureCallback<HelixListModsVIPsError, QString> failureCallback) = 0;
 
     virtual void update(QString clientId, QString oauthToken) = 0;
 
@@ -1049,7 +1051,7 @@ public:
     void getChannelVIPs(
         QString broadcasterID,
         ResultCallback<std::vector<HelixVip>> successCallback,
-        FailureCallback<HelixListVIPsError, QString> failureCallback) final;
+        FailureCallback<HelixListModsVIPsError, QString> failureCallback) final;
 
     void update(QString clientId, QString oauthToken) final;
 

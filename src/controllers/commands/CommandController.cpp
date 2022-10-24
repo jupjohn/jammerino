@@ -2941,9 +2941,9 @@ void CommandController::initialize(Settings &, Paths &paths)
         });
     }
 
-    auto formatVIPListError = [](HelixListVIPsError error,
+    auto formatModsVIPsListError = [](HelixListModsVIPsError error,
                                  const QString &message) -> QString {
-        using Error = HelixListVIPsError;
+        using Error = HelixListModsVIPsError;
 
         QString errorMessage = QString("Failed to list VIPs - ");
 
@@ -2993,7 +2993,7 @@ void CommandController::initialize(Settings &, Paths &paths)
 
     this->registerCommand(
         "/vips",
-        [formatVIPListError](const QStringList &words,
+        [formatModsVIPsListError](const QStringList &words,
                              auto channel) -> QString {
             switch (getSettings()->helixTimegateVIPs.getValue())
             {
@@ -3064,8 +3064,8 @@ void CommandController::initialize(Settings &, Paths &paths)
 
                     channel->addMessage(builder.release());
                 },
-                [channel, formatVIPListError](auto error, auto message) {
-                    auto errorMessage = formatVIPListError(error, message);
+                [channel, formatModsVIPsListError](auto error, auto message) {
+                    auto errorMessage = formatModsVIPsListError(error, message);
                     channel->addMessage(makeSystemMessage(errorMessage));
                 });
 

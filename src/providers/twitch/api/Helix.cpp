@@ -1996,9 +1996,9 @@ void Helix::sendWhisper(
 void Helix::getChannelVIPs(
     QString broadcasterID,
     ResultCallback<std::vector<HelixVip>> successCallback,
-    FailureCallback<HelixListVIPsError, QString> failureCallback)
+    FailureCallback<HelixListModsVIPsError, QString> failureCallback)
 {
-    using Error = HelixListVIPsError;
+    using Error = HelixListModsVIPsError;
     QUrlQuery urlQuery;
 
     urlQuery.addQueryItem("broadcaster_id", broadcasterID);
