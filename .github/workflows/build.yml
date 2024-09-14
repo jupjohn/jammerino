@@ -26,7 +26,7 @@ env:
 jobs:
   build-ubuntu-docker:
     name: "Build Ubuntu in Docker"
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container: ${{ matrix.container }}
     strategy:
       matrix:
