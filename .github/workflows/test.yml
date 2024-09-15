@@ -21,7 +21,7 @@ concurrency:
 jobs:
   test:
     name: "${{ matrix.os }}"
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container: ${{ matrix.container }}
     strategy:
       matrix:
